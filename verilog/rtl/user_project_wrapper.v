@@ -82,6 +82,9 @@ module user_project_wrapper #(
 /* User project is instantiated  here   */
 /*--------------------------------------*/
 
+assign io_oeb[31] =  1'b0;
+assign io_oeb[30] =  1'b1;
+
 uart uart (
 `ifdef USE_POWER_PINS
 	.vccd1(vccd1),	// User area 1 1.8V power
