@@ -17,13 +17,27 @@ module uart #(
   output wire   wbs_ack_o,
   output wire   [31:0] wbs_dat_o,
 
-  // UART ports
-  output wire   tx,
-  input wire    rx,
+  // IO ports
+  input  [`MPRJ_IO_PADS-1:0] io_in,
+  output [`MPRJ_IO_PADS-1:0] io_out,
+  output [`MPRJ_IO_PADS-1:0] io_oeb,
 
   // irq
-  output wire   irq
+  output [2:0] user_irq
 );
+
+  // UART 
+  wire  tx;
+  wire  rx;
+
+  assign io_oeb[31] =  1'b0;
+  assign io_oeb[30] =  1'b1;
+  assign io_out[31] = tx;
+  assign rx = io_in[30];
+
+  // irq
+  wire irq;
+  assign user_irq[0] = irq;
 
   // CSR
   wire [31:0] clk_freq;

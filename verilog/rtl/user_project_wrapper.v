@@ -82,9 +82,6 @@ module user_project_wrapper #(
 /* User project is instantiated  here   */
 /*--------------------------------------*/
 
-assign io_oeb[31] =  1'b0;
-assign io_oeb[30] =  1'b1;
-
 uart uart (
 `ifdef USE_POWER_PINS
 	.vccd1(vccd1),	// User area 1 1.8V power
@@ -95,21 +92,22 @@ uart uart (
 
     // MGMT SoC Wishbone Slave
 
-    .wbs_cyc_i(wbs_cyc_i),
     .wbs_stb_i(wbs_stb_i),
+    .wbs_cyc_i(wbs_cyc_i),
     .wbs_we_i(wbs_we_i),
     .wbs_sel_i(wbs_sel_i),
-    .wbs_adr_i(wbs_adr_i),
     .wbs_dat_i(wbs_dat_i),
+    .wbs_adr_i(wbs_adr_i),
     .wbs_ack_o(wbs_ack_o),
     .wbs_dat_o(wbs_dat_o),
 
-    // UART ports
-    .tx         (io_out[31] ),
-    .rx         (io_in[30]  ),
+    // IO ports
+    .io_in  (io_in      ),
+    .io_out (io_out     ),
+    .io_oeb (io_oeb     ),
 
     // irq
-    .irq        (user_irq[0])
+    .user_irq (user_irq)
 );
 
 endmodule	// user_project_wrapper
