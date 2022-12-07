@@ -36,11 +36,17 @@ module uart #(
   wire tx_clear_req;
   wire tx_start;
 
+  wire i_wb_cyc;
+  wire i_wb_stb;
+    
+  assign i_wb_cyc = (wbs_adr_i[31:8] == 32'h3000_00) ? wbs_cyc_i : 1'b0;
+  assign i_wb_stb = (wbs_adr_i[31:8] == 32'h3000_00) ? wbs_stb_i : 1'b0;
+
   CSR CSR(
     .i_clk      (wb_clk_i   ),
     .i_rst_n    (~wb_rst_i  ),
-    .i_wb_cyc   (wbs_cyc_i  ),
-    .i_wb_stb   (wbs_stb_i  ),
+    .i_wb_cyc   (i_wb_cyc   ),
+    .i_wb_stb   (i_wb_stb   ),
     .o_wb_stall (),
     .i_wb_adr   (wbs_adr_i  ),
     .i_wb_we    (wbs_we_i   ),
