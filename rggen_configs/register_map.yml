@@ -1,0 +1,23 @@
+register_blocks:
+  - name: CSR
+    byte_size: 20
+    registers:
+      - name: CLOCK_FREQ
+        bit_fields: 
+        - { name: clock_freq, bit_assignment: { width: 32 }, type: rw, initial_value: 115200}
+      - name: RECEIVED_DATA
+        bit_fields: 
+        - { name: rx, bit_assignment: { width: 8 }, type: rotrg, initial_value: 0x0}
+        - { name: reserved, bit_assignment: { width: 24 }, type: reserved }
+      - name: TRANSMISSION_DATA
+        bit_fields: 
+        - { name: tx, bit_assignment: { width: 8 }, type: rw, initial_value: 0x0}
+        - { name: reserved, bit_assignment: { width: 24 }, type: reserved }
+      - name: INTERRUPT_ENABLE
+        bit_fields: 
+        - { name: irq_en, bit_assignment: { width: 1 }, type: rw, initial_value: 0x1}
+        - { name: reserved, bit_assignment: { width: 30 }, type: reserved }
+      - name: TRANSMISSION_START
+        bit_fields: 
+        - { name: tx_start, bit_assignment: { width: 1 }, type: rwc, initial_value: 0x0}
+        - { name: reserved, bit_assignment: { width: 30 }, type: reserved }
