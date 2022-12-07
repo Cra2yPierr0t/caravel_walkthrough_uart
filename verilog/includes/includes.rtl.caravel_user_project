@@ -1,5 +1,9 @@
 # Caravel user project includes
 -v $(USER_PROJECT_VERILOG)/rtl/user_project_wrapper.v	     
--v $(USER_PROJECT_VERILOG)/rtl/user_proj_example.v
-
- 
++incdir+$(USER_PROJECT_VERILOG)/rtl
++incdir+$(USER_PROJECT_VERILOG)/rtl/rggen-verilog-rtl
+-y $(USER_PROJECT_VERILOG)/rtl/rggen-verilog-rtl
+-v $(USER_PROJECT_VERILOG)/rtl/CSR.v
+-v $(USER_PROJECT_VERILOG)/rtl/UART/uart.v
+-v $(USER_PROJECT_VERILOG)/rtl/UART/uart_transmission.v
+-v $(USER_PROJECT_VERILOG)/rtl/UART/uart_receive.v
