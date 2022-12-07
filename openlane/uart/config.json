@@ -19,7 +19,7 @@
     "DIE_AREA": "0 0 400 400",
     "PL_BASIC_PLACEMENT": 0,
     "PL_TARGET_DENSITY": 0.60,
-    "ROUTING_CORE": 16,
+    "ROUTING_CORES": 16,
     "VDD_NETS": ["vccd1"],
     "GND_NETS": ["vssd1"],
     "DIODE_INSERTION_STRATEGY": 4,
