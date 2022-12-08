@@ -1,4 +1,4 @@
-`include "rggen-verilog-rtl/rggen_rtl_macros.vh"
+`include "rggen_rtl_macros.vh"
 module CSR #(
   parameter ADDRESS_WIDTH = 5,
   parameter PRE_DECODE = 0,
